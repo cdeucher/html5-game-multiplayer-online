@@ -1,0 +1,77 @@
+{"frames": [
+
+{
+	"filename": "atk1",
+	"frame": {"x":0,"y":0,"w":55,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk2",
+	"frame": {"x":55,"y":0,"w":60,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk3",
+	"frame": {"x":105,"y":0,"w":60,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":2,"y":2,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk4",
+	"frame": {"x":170,"y":0,"w":60,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":3,"y":3,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk5",
+	"frame": {"x":0,"y":0,"w":55,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":4,"y":4,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk6",
+	"frame": {"x":225,"y":0,"w":60,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":5,"y":5,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk7",
+	"frame": {"x":285,"y":0,"w":55,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":6,"y":6,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk8",
+	"frame": {"x":345,"y":0,"w":70,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":7,"y":7,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+}    
+],
+"meta": {
+	"app": "#",
+	"version": "1.0",
+	"image": "enemy.png",
+	"format": "RGBA8888",
+	"size": {"w":244,"h":108},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:99b2f74fa157c5b63e72b0d68be078b4:1/1$"
+}
+}

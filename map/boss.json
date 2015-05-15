@@ -1,0 +1,77 @@
+{"frames": [
+
+{
+	"filename": "walk1",
+	"frame": {"x":0,"y":0,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
+	"sourceSize": {"w":40,"h":40}
+},
+{
+	"filename": "walk2",
+	"frame": {"x":80,"y":0,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":40,"h":40}
+},
+{
+	"filename": "walk3",
+	"frame": {"x":160,"y":0,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":2,"y":2,"w":40,"h":40},
+	"sourceSize": {"w":40,"h":40}
+},
+{
+	"filename": "walk4",
+	"frame": {"x":240,"y":0,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":3,"y":3,"w":40,"h":40},
+	"sourceSize": {"w":40,"h":40}
+},
+{
+	"filename": "atk1",
+	"frame": {"x":0,"y":90,"w":80,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":4,"y":4,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk2",
+	"frame": {"x":90,"y":90,"w":80,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":5,"y":5,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk3",
+	"frame": {"x":165,"y":90,"w":110,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":6,"y":6,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+},
+{
+	"filename": "atk4",
+	"frame": {"x":280,"y":90,"w":100,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":7,"y":7,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80}
+}    
+],
+"meta": {
+	"app": "#",
+	"version": "1.0",
+	"image": "boss.png",
+	"format": "RGBA8888",
+	"size": {"w":244,"h":108},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:99b2f74fa157c5b63e72b0d68be078b4:1/1$"
+}
+}
