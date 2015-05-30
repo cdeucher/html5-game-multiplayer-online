@@ -1,0 +1,77 @@
+{"frames": [
+
+{
+	"filename": "walk1",
+	"frame": {"x":30,"y":0,"w":65,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "walk2",
+	"frame": {"x":95,"y":0,"w":65,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "walk3",
+	"frame": {"x":160,"y":0,"w":65,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":2,"y":2,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "walk4",
+	"frame": {"x":300,"y":0,"w":65,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":3,"y":3,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk1",
+	"frame": {"x":10,"y":50,"w":85,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk2",
+	"frame": {"x":245,"y":50,"w":80,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+}, 
+{
+	"filename": "atk3",
+	"frame": {"x":160,"y":50,"w":85,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk4",
+	"frame": {"x":245,"y":50,"w":80,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+}  
+],
+"meta": {
+	"app": "#",
+	"version": "1.0",
+	"image": "k.gif",
+	"format": "RGBA8888",
+	"size": {"w":500,"h":280},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:99b2f74fa157c5b63e72b0d68be078b4:1/1$"
+}
+}

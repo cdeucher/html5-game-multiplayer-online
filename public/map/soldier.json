@@ -1,0 +1,77 @@
+{"frames": [
+
+{
+	"filename": "atk1",
+	"frame": {"x":0,"y":0,"w":55,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk2",
+	"frame": {"x":55,"y":0,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk3",
+	"frame": {"x":105,"y":0,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":2,"y":2,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk4",
+	"frame": {"x":155,"y":0,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":3,"y":3,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk5",
+	"frame": {"x":0,"y":260,"w":54,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk6",
+	"frame": {"x":53,"y":260,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":1,"y":1,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk7",
+	"frame": {"x":103,"y":260,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":2,"y":2,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "atk8",
+	"frame": {"x":153,"y":260,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":3,"y":3,"w":40,"h":40},
+	"sourceSize": {"w":32,"h":32}
+}    
+],
+"meta": {
+	"app": "#",
+	"version": "1.0",
+	"image": "enemy.png",
+	"format": "RGBA8888",
+	"size": {"w":244,"h":108},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:99b2f74fa157c5b63e72b0d68be078b4:1/1$"
+}
+}
