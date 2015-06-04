@@ -1,5 +1,5 @@
-  var socket = io.connect('http://game-newtxt.rhcloud.com');
-  //var socket = io.connect('http://game:8080');
+  //var socket = io.connect('http://game-newtxt.rhcloud.com');
+  var socket = io.connect('http://game:8080');
   var userx   = 'x3'+Math.floor(Math.random() * 100 + 1);
   var romanos = new oSpiN({game:game,socket:socket});
 
@@ -19,17 +19,18 @@
   socket.on('client_get_soldier', function (data) {
       romanos.set_group(data,userx);
   });
-  socket.on('client_to_go', function (soldier,enemy) {
-      romanos.to_go(soldier,enemy);
+  socket.on('client_update_soldier', function (data) {
+      romanos.update_remote(data);
   });
-
   /*
   *  Actions
   */
     //romanos.add({x:230,y:210,type:Math.floor(Math.random() * 4 + 1),dono:userx,base:1});
     //romanos.add({x:230,y:210,type:Math.floor(Math.random() * 4 + 1),dono:userx});
     //setInterval(function(){ romanos.update(userx,socket); },5000);
-    setTimeout(function(){  socket.emit('server_get_soldier'); },1000);
+    setTimeout(function(){
+        socket.emit('server_get_soldier');
+      },1000);
     //console.log("centuria - ",romanos.get_centuria());
   function logme(data){
     msg = "";

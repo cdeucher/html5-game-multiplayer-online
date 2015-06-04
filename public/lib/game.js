@@ -1,5 +1,5 @@
 var game = new Phryan.Game(900, 600, Phryan.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
-
+var type = undefined;
 function preload() {
   game.load.tilemap('map', 'map/map.json', null, Phryan.Tilemap.TILED_JSON);
   game.load.spritesheet('mini','img/scorched_earth.png',128,128);
@@ -16,6 +16,9 @@ var cursors;
 function create() {
    game.physics.startSystem(Phryan.Physics.ARCADE);
    game.world.setBounds(0, 0, 1280, 960);
+   game.scale.fullScreenScaleMode = Phryan.ScaleManager.SHOW_ALL;
+   //game.scale.scaleMode = Phryan.ScaleManager.SHOW_ALL;
+   game.scale.refresh();
    /*
    *   Map
    */
@@ -44,9 +47,24 @@ function render() {
 function  goclick(a){
      x = game.rnd.integerInRange(25, 150);
      y = game.rnd.integerInRange(1, 100);
-     type = Math.floor(Math.random() * 2 + 1);
-     romanos.add({x:a.clientX,y:a.clientY,type:type,dono:userx,base:{x:a.clientX-x,y:a.clientY}});
+    if(type == undefined)
+     type = Math.floor(Math.random() * 4 + 1);
+
+     base = (type > 2)?{x:a.screenX+x,y:a.screenY}:{x:a.screenX-x,y:a.screenY};
+     romanos.add({x:a.screenX,y:a.screenY,type:type,dono:userx,base:base});
+}
+function  getType(a){
+  $('#card'+type).css({"background-color":"white"});
+  $('#card'+a).css({"background-color":"red"});
+  type = a;
 }
 function isObject(val) {
     return (typeof val === 'object');
+}
+function gofull() {
+  if (game.scale.isFullScreen) {
+    game.scale.stopFullScreen();
+  } else {
+    game.scale.startFullScreen(false);
+  }
 }

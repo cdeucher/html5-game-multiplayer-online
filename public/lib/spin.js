@@ -20,14 +20,12 @@ function oSpiN(data){
     }
     var _update = function(socket){
       for(i in _centuria){
-        _centuria[i].update(_orda,socket);
-      }
-      for(i in _orda){
-        _orda[i].update(_centuria,socket);
+        _centuria[i].update(_orda,socket,_centuria);
       }
     }
-    var _to_go = function(soldier,enemy){
-        //   _orda[soldier].toGO(_centuria[enemy]);
+    var _update_remote = function(soldier){
+      if(_orda[soldier._id] != undefined)
+        _orda[soldier._id].update_remote(soldier,_centuria);
     }
     var _remove = function(dono){
       for(i in _orda){
@@ -60,8 +58,8 @@ function oSpiN(data){
         update: function(socket){
              return _update(socket);
         },
-        to_go: function(soldier,enemy){
-             return _to_go(soldier,enemy);
+        update_remote: function(soldier){
+             return _update_remote(soldier);
         },
         remove: function(data){
              return _remove(data);

@@ -35,7 +35,7 @@ socket.on("connection", function (client) {
         client.broadcast.emit("update", tmp_remove + " has left the server.");
         client.broadcast.emit("gokill", tmp_remove);
         delete people[client.id];
-        player.delete_soldier(client,db,tmp_remove);
+        player.delete_soldier(client,db,tmp_remove,false);
     });
     /*
     *  players
@@ -49,10 +49,8 @@ socket.on("connection", function (client) {
     client.on('server_update_soldier', function (soldier) {
       player.update_soldier(client,db,soldier,people);
     });
-    client.on('server_to_go', function (soldier,enemy) {
-      //console.log(data);
-      client.broadcast.emit("client_to_go",soldier,enemy);
-      //client.emit("client_to_go",data);
+    client.on('server_remove_soldier', function (soldier) {
+      player.delete_soldier(client,db,false,soldier);
     });
 });
 

@@ -6,8 +6,9 @@
 * conf.y - int
 * conf.type - int [0,1,2,3,4,5]
 */
-Soldier = function (conf) {
+Soldier = function (conf,_game,_socket) {
          this._id      = conf._id;
+         this._socket  = _socket;
          this.x        = conf.x;
          this.y        = conf.y;
          this.type     = conf.type;
@@ -52,20 +53,21 @@ Soldier = function (conf) {
                     break;
                 case 5:
                     this.soldier = game.add.sprite(this.x,this.y, 'dragon', 0);
-                    this.soldier.healt  = 30;
-                    this.soldier.force  = 6;
+                    this.soldier.healt  = 60;
+                    this.soldier.force  = 8;
                     this.soldier.action_ATK = [5,6,7,8];
                     this.soldier.base   = this.base;
                     break;
         }
           this.anima  = this.soldier.animations.add('atk', this.soldier.action_ATK, 4, false);
           this.anima.onComplete.add(this.stopAtk, this);
-
+          game.physics.enable(this.soldier, Phryan.Physics.ARCADE);
+      if(!this.db){ //remote does not started move
           this.soldier.animations.add('walk', [0,1,2,3], 4, true);
           this.soldier.animations.play('walk');
           this.anima.current = 'walk';
-          game.physics.enable(this.soldier, Phryan.Physics.ARCADE);
           this.tween();
+      }
 };
 Soldier.prototype.tween  = function(){
           this.soldier.tween = game.add.tween(this.soldier)
@@ -73,12 +75,9 @@ Soldier.prototype.tween  = function(){
           this.soldier.tween.start();
           this.soldier.tween._lastChild.onComplete.add(this.end_walk,this);
 }
-Soldier.prototype.intersects: function(a, b) {
-    return a.right <= b.position.x ? !1 : a.bottom <= b.position.y ? !1 : a.position.x >= b.right ? !1 : a.position.y >= b.bottom ? !1 : !0
-};
-
-Soldier.prototype.update = function(enemys,socket) {
+Soldier.prototype.update = function(enemys,socket,_centuria) {
      if(this.soldier.alive){
+       socket.emit('server_update_soldier',{_id:this._id,alive:this.soldier.alive, x: this.soldier.x, y:this.soldier.y,db:this.db});
        for(i in enemys){
          enemys[i].soldier._id = enemys[i]._id;
          this.soldier._id      = this._id;
@@ -92,11 +91,6 @@ Soldier.prototype.update = function(enemys,socket) {
                       .to({ x: enemys[i].soldier.x-70, y: (enemys[i].soldier.y - enemys[i].soldier.height) },
                       6000, Phryan.Easing.Quadratic.InOut);
                    this.soldier.tween._lastChild.onComplete.add(this.end_walk,this);
-                   // to server
-                   soldier = {_id:this._id,x:this.x,y:this.y,db:this.db};
-                   socket.emit('server_update_soldier',soldier);//grava server
-                   socket.emit('server_to_go',soldier._id,enemys[i]._id);//grava server
-                    console.log('atake '+soldier._id +' -> ' +enemys[i]._id);
                    this.soldier.tween.start();
                    this.soldier.animations.play('walk');
            }
@@ -104,17 +98,29 @@ Soldier.prototype.update = function(enemys,socket) {
        }
      }
 };
-Soldier.prototype.toGO = function(enemy){
-          console.log('toGO '+enemy._id);
-          enemy.mira = this.soldier;//alguem persegue
-          this.anima.current = 'walk';
-          this.soldier.tween = game.add.tween(this.soldier)
-             .to({ x: enemy.soldier.x, y: enemy.soldier.y},
-             6000, Phryan.Easing.Quadratic.InOut);
-          this.soldier.tween._lastChild.onComplete.add(this.end_walk,this);
-          this.soldier.tween.start();
-          this.soldier.animations.play('walk');
-}
+Soldier.prototype.update_remote = function(soldier,_centuria) {
+     if(this.soldier.alive){
+       this.soldier.x = soldier.x;
+       this.soldier.y = soldier.y;
+       this.soldier.alive = soldier.alive;
+       for(i in _centuria){
+         game.physics.arcade.overlap(this.soldier,_centuria[i].soldier, this.collision , null, this);
+
+         if (_centuria[i].soldier.alive && _centuria[i].mira == undefined && _centuria[i].soldier.alive) {
+          if (game.physics.arcade.distanceBetween(this.soldier, _centuria[i].soldier) < 250){
+                   _centuria[i].mira = this.soldier;//alguem persegue
+                  // this.anima.current = 'walk';
+                   this.soldier.animations.play('walk');
+                /*   this.soldier.tween = game.add.tween(this.soldier)
+                      .to({ x: _centuria[i].soldier.x-70, y: (_centuria[i].soldier.y - _centuria[i].soldier.height) },
+                      6000, Phryan.Easing.Quadratic.InOut);
+                   this.soldier.tween._lastChild.onComplete.add(this.end_walk,this);
+                */
+           }
+         }
+       }
+     }
+};
 Soldier.prototype.collision = function(soldier,enemy){
      if(this.soldier.atk == undefined){
          this.soldier.atk = enemy;
@@ -127,7 +133,9 @@ Soldier.prototype.collision = function(soldier,enemy){
 Soldier.prototype.end_Atk = function(enemy,anima){
       this.soldier.animations.stop('atk');
       this.anima.current = undefined;
-    if(this.soldier.atk.alive){
+    if(!this.soldier.atk.alive){
+        this._socket.emit('server_remove_soldier',{_id:this.soldier.atk._id});
+
         console.log('end_Atk');
         this.soldier.atk.alive = false;
         this.soldier.atk.kill();
