@@ -19,15 +19,27 @@
   socket.on('client_get_soldier', function (data) {
       romanos.set_group(data,userx);
   });
-  socket.on('client_update_soldier', function (data) {
+  socket.on('client_update_remote', function (data) {
       romanos.update_remote(data);
+  });
+  socket.on('client_atk_to', function (data) {
+      romanos.atk_to(socket,data);
+  });
+  socket.on('client_move_to', function (data) {
+      romanos.move_to(socket,data);
+  });
+  socket.on('client_collision_to', function (data) {
+      romanos.collision_to(socket,data);
+  });
+  socket.on('client_kill_to', function (data) {
+      romanos.kill_to(socket,data);
   });
   /*
   *  Actions
   */
     //romanos.add({x:230,y:210,type:Math.floor(Math.random() * 4 + 1),dono:userx,base:1});
     //romanos.add({x:230,y:210,type:Math.floor(Math.random() * 4 + 1),dono:userx});
-    //setInterval(function(){ romanos.update(userx,socket); },5000);
+    setInterval(function(){ romanos.update(socket); },1000);
     setTimeout(function(){
         socket.emit('server_get_soldier');
       },1000);

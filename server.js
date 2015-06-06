@@ -15,10 +15,11 @@ var server = require('http').createServer(function(request, response) {
 socket = require('socket.io').listen(server);
 var request = require('request');
 /*
-*   DB
+*   LIBS
 */
-var db     = require('./lib/mongo');
-var player = require('./lib/player');
+var db        = require('./lib/mongo');
+var player    = require('./lib/player');
+var groups    = require('./lib/group');
 
 var people = {};
 
@@ -44,13 +45,32 @@ socket.on("connection", function (client) {
       player.get_soldier(client,db,people);
     });
     client.on('server_set_soldier', function (soldier) {
-      player.set_soldier(client,db,soldier,people);
+      player.set_soldier(client,db,soldier,people,groups);
     });
-    client.on('server_update_soldier', function (soldier) {
-      player.update_soldier(client,db,soldier,people);
+    client.on('server_update_remote', function (soldier) {
+      //player.update_soldier(client,db,soldier,people);
+      client.broadcast.emit("client_update_remote",soldier);//update other players
     });
-    client.on('server_remove_soldier', function (soldier) {
-      player.delete_soldier(client,db,false,soldier);
+    client.on('server_atk_to', function (data) {
+      console.log('server_atk_to',data);
+      client.broadcast.emit("client_atk_to",data);//update other players
+      client.emit("client_atk_to",data);//update other players
+    });
+    client.on('server_move_to', function (data) {
+      console.log('server_move_to',data);
+      client.broadcast.emit("client_move_to",data);//update other players
+      client.emit("client_move_to",data);//update other players
+    });
+    client.on('server_collision_to', function (data) {
+      console.log('server_collision_to',data);
+      client.broadcast.emit("client_collision_to",data);//update other players
+      client.emit("client_collision_to",data);//update other players
+    });
+    client.on('server_kill_soldier', function (data) {
+      console.log('server_kill_soldier',data);
+      player.delete_soldier(client,db,false,data);   // delete database
+      client.broadcast.emit("client_kill_to",data);//
+      client.emit("client_kill_to",data);//update other players
     });
 });
 

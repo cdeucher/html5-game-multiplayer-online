@@ -12,7 +12,6 @@ function preload() {
   game.load.atlas('dragon',  'img/enemy/reddragon.png', 'map/dragon.json');
 }
 
-var cursors;
 function create() {
    game.physics.startSystem(Phryan.Physics.ARCADE);
    game.world.setBounds(0, 0, 1280, 960);
@@ -34,8 +33,7 @@ function create() {
 }
 
 function update() {
-   romanos.update(socket);
-
+  romanos.check_collision();
    if (game.time.fps !== 0) fpsText.setText(game.time.fps + ' FPS');
 }
 
@@ -49,9 +47,10 @@ function  goclick(a){
      y = game.rnd.integerInRange(1, 100);
     if(type == undefined)
      type = Math.floor(Math.random() * 4 + 1);
+     base = (type > 2)?{x:a.clientX+x,y:a.clientY}:{x:a.clientX-x,y:a.clientY};
+     romanos.add({x:a.clientX,y:a.clientY,type:type,dono:userx,base:base});
 
-     base = (type > 2)?{x:a.screenX+x,y:a.screenY}:{x:a.screenX-x,y:a.screenY};
-     romanos.add({x:a.screenX,y:a.screenY,type:type,dono:userx,base:base});
+
 }
 function  getType(a){
   $('#card'+type).css({"background-color":"white"});
